@@ -1,0 +1,124 @@
+{
+  "Navigation": {
+    "brand": "Recanto Vita Bella",
+    "ourCabins": "Nossas Cabanas",
+    "about": "Sobre",
+    "location": "Localização", 
+    "contact": "Contato",
+    "connect": "Conecte-se conosco:"
+  },
+  "HomePage": {
+    "hero": {
+      "title": "Fuja para a Natureza",
+      "subtitle": "Cabanas rústicas de madeira aninhadas nas montanhas",
+      "cta": "Ver Nossas Cabanas"
+    },
+    "featuredEvent": {
+      "title": "Evento em Destaque: Mons Ultra Trail - Novembro 2025",
+      "description": "Reserve sua acomodação agora para este evento internacional de trail running!",
+      "cta": "Encontrar Aluguéis para a Trilha"
+    },
+    "cabins": {
+      "title": "Nossas Cabanas de Madeira",
+      "guests": "hóspedes",
+      "night": "noite",
+      "bookNow": "Reserve Agora",
+      "details": "Detalhes",
+      "sleeps": "Acomoda",
+      "price": "300",
+      "sqft": "m²",
+      "money": "reais"
+    },
+    "features": {
+      "title": "Por Que Escolher Nossas Cabanas?",
+      "mountainViews": {
+        "title": "Vistas da Montanha",
+        "description": "Acorde com vistas deslumbrantes da montanha todas as manhãs"
+      },
+      "cozyFireplaces": {
+        "title": "Lareiras Aconchegantes",
+        "description": "Aqueça-se junto ao fogo após um dia de aventuras ao ar livre"
+      },
+      "trailAccess": {
+        "title": "Acesso às Trilhas",
+        "description": "Acesso direto a trilhas de caminhada e corrida"
+      }
+    }
+  },
+  "BookingModal": {
+    "bookProperty": "Reservar Propriedade",
+    "perNight": "por noite",
+    "maxGuests": "Max hóspedes",
+    "checkIn": "Data de Check-in",
+    "checkOut": "Data de Check-out",
+    "numberOfGuests": "Número de Hóspedes",
+    "guest": "hóspede",
+    "guests": "hóspedes",
+    "nights": "{count, plural, =1 {1 noite} other {# noites}}",
+    "total": "Total",
+    "contactInformation": "Informações de Contato",
+    "fullName": "Nome Completo",
+    "email": "Endereço de Email",
+    "phone": "Número de Telefone",
+    "specialRequests": "Solicitações Especiais",
+    "enterName": "Digite seu nome completo",
+    "enterEmail": "Digite seu endereço de email",
+    "enterPhone": "Digite seu número de telefone",
+    "enterRequests": "Alguma solicitação ou requisito especial...",
+    "bookingNote": "Esta é uma solicitação de reserva. Entraremos em contato em até 24 horas para confirmar sua reserva.",
+    "cancel": "Cancelar",
+    "submitBooking": "Enviar Solicitação de Reserva",
+    "submitting": "Enviando...",
+    "success": "Sucesso!",
+    "error": "Erro",
+    "fillRequired": "Por favor, preencha todos os campos obrigatórios",
+    "tooManyGuests": "Máximo de {max} hóspedes permitidos para esta propriedade",
+    "bookingSubmitted": "Sua solicitação de reserva foi enviada com sucesso!",
+    "bookingFailed": "Falha ao enviar solicitação de reserva. Tente novamente.",
+    "closeModal": "Fechar modal",
+    "reserveViaWhatsApp": "Reservar via WhatsApp",
+    "whatsappRedirect": "Redirecionando para o WhatsApp... Por favor, envie a mensagem para completar sua solicitação de reserva.",
+    "whatsappFailed": "Falha ao abrir o WhatsApp. Tente novamente.",
+    "whatsappInfo": "Sua solicitação de reserva será enviada via WhatsApp para confirmação rápida",
+    "whatsIncluded": {
+      "title": "O que está incluído?",
+      "frigobar": {
+        "title": "Frigobar Abastecido:",
+        "item1": "Presunto, manteiga, queijo, pão fresco",
+        "item2": "Suco de laranja, suco de uva, leite",
+        "item3": "Mel, geleia, ovos frescos",
+        "item4": "Café, chá, água mineral",
+        "item5": "Frutas frescas e iogurte"
+      },
+      "amenities": {
+        "title": "Comodidades da Cabana:",
+        "item1": "Cozinha completa e área de jantar",
+        "item2": "Wi-Fi e sistema de entretenimento",
+        "item3": "Roupas de cama e toalhas fornecidas",
+        "item4": "Área de estar externa",
+        "item5": "Estacionamento gratuito"
+      }
+    }
+  },
+  "CabinData": {
+    "cabin1": {
+      "name": "Cabana da Montanha 1",
+      "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
+      "price": "300"
+    },
+    "cabin2": {
+      "name": "Cabana da Montanha 2", 
+      "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
+      "price": "300"
+    },
+    "cabin3": {
+      "name": "Cabana da Montanha 3",
+      "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
+      "price": "300"
+    },
+    "cabin4": {
+      "name": "Cabana da Montanha 4",
+      "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias."
+    }
+  }
+}

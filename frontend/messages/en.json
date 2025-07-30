@@ -1,0 +1,123 @@
+{
+  "Navigation": {
+    "brand": "Recanto Vita Bella",
+    "ourCabins": "Our Cabins",
+    "about": "About",
+    "location": "Location",
+    "contact": "Contact",
+    "connect": "Connect with us:"
+  },
+  "HomePage": {
+    "hero": {
+      "title": "Escape to Nature",
+      "subtitle": "Rustic wood cabins nestled in the mountains",
+      "cta": "View Our Cabins"
+    },
+    "featuredEvent": {
+      "title": "Featured Event: Mons Ultra Trail - November 2025",
+      "description": "Book your accommodation now for this international trail running event!",
+      "cta": "Find Rentals for the Trail"
+    },
+    "cabins": {
+      "title": "Our Wooden Cabins",
+      "guests": "guests",
+      "night": "night",
+      "bookNow": "Book Now",
+      "details": "Details",
+      "sleeps": "Sleeps",
+      "sqft": "sq ft",
+      "money": "usd"
+    },
+    "features": {
+      "title": "Why Choose Our Cabins?",
+      "mountainViews": {
+        "title": "Mountain Views",
+        "description": "Wake up to breathtaking mountain vistas every morning"
+      },
+      "cozyFireplaces": {
+        "title": "Cozy Fireplaces",
+        "description": "Warm up by the fire after a day of outdoor adventures"
+      },
+      "trailAccess": {
+        "title": "Trail Access",
+        "description": "Direct access to hiking trails and running routes"
+      }
+    }
+  },
+  "BookingModal": {
+    "bookProperty": "Book Property",
+    "perNight": "per night",
+    "maxGuests": "Max guests",
+    "checkIn": "Check-in Date",
+    "checkOut": "Check-out Date",
+    "numberOfGuests": "Number of Guests",
+    "guest": "guest",
+    "guests": "guests",
+    "nights": "{count, plural, =1 {1 night} other {# nights}}",
+    "total": "Total",
+    "contactInformation": "Contact Information",
+    "fullName": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "specialRequests": "Special Requests",
+    "enterName": "Enter your full name",
+    "enterEmail": "Enter your email address",
+    "enterPhone": "Enter your phone number",
+    "enterRequests": "Any special requests or requirements...",
+    "bookingNote": "This is a booking request. We will contact you within 24 hours to confirm your reservation.",
+    "cancel": "Cancel",
+    "submitBooking": "Submit Booking Request",
+    "submitting": "Submitting...",
+    "success": "Success!",
+    "error": "Error",
+    "fillRequired": "Please fill in all required fields",
+    "tooManyGuests": "Maximum {max} guests allowed for this property",
+    "bookingSubmitted": "Your booking request has been submitted successfully!",
+    "bookingFailed": "Failed to submit booking request. Please try again.",
+    "closeModal": "Close modal",
+    "reserveViaWhatsApp": "Reserve via WhatsApp",
+    "whatsappRedirect": "Redirecting to WhatsApp... Please send the message to complete your booking request.",
+    "whatsappFailed": "Failed to open WhatsApp. Please try again.",
+    "whatsappInfo": "Your booking request will be sent via WhatsApp for quick confirmation",
+    "whatsIncluded": {
+      "title": "What's Included?",
+      "frigobar": {
+        "title": "Stocked Frigobar:",
+        "item1": "Ham, butter, cheese, fresh bread",
+        "item2": "Orange juice, grape juice, milk",
+        "item3": "Honey, jam, fresh eggs",
+        "item4": "Coffee, tea, bottled water",
+        "item5": "Fresh fruit & yogurt"
+      },
+      "amenities": {
+        "title": "Cabin Amenities:",
+        "item1": "Full kitchen & dining area",
+        "item2": "Wi-Fi & entertainment system",
+        "item3": "Linens & towels provided",
+        "item4": "Outdoor seating area",
+        "item5": "Free parking"
+      }
+    }
+  },
+  "CabinData": {
+    "cabin1": {
+      "name": "Mountain Cabin 1",
+      "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere.",
+      "price": "90"
+    },
+    "cabin2": {
+      "name": "Mountain Cabin 2",
+      "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere.",
+      "price": "90"
+    },
+    "cabin3": {
+      "name": "Mountain Cabin 3",
+      "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere.",
+      "price": "90"
+    },
+    "cabin4": {
+      "name": "Mountain Cabin 4",
+      "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere."
+    }
+  }
+}

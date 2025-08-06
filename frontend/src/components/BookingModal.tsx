@@ -323,23 +323,23 @@ ${message || 'None'}
                 {/* Date Selection */}
                 <VStack gap={4} align="stretch">
                   <HStack gap={4} flexDirection={{ base: "column", md: "row" }}>
-                  <Field.Root
-                    flex={1}
-                    label={t('checkIn')} // <-- Pass the label text here
-                    fontSize={{ base: 'sm', md: 'md' }}
-                    fontWeight="medium"
-                  >
-                    <Input
-                      type="date"
-                      value={checkIn}
-                      onChange={(e) => setCheckIn(e.target.value)}
-                      min={getMinDate()}
-                      size="lg"
-                    />
-                  </Field.Root>
+                    <Field.Root flex={1}>
+                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                        {t('checkIn')}
+                      </Field.Label>
+                      <Input
+                        type="date"
+                        value={checkIn}
+                        onChange={(e) => setCheckIn(e.target.value)}
+                        min={getMinDate()}
+                        size="lg"
+                      />
+                    </Field.Root>
                     
-                      <Field.Root fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                    <Field.Root flex={1}>
+                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
                         {t('checkOut')}
+                      </Field.Label>
                       <Input
                         type="date"
                         value={checkOut}
@@ -352,8 +352,10 @@ ${message || 'None'}
                 </VStack>
 
                 {/* Guests */}
-                  <Field.Root fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                <Field.Root>
+                  <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
                     {t('numberOfGuests')}
+                  </Field.Label>
                   <NativeSelectRoot>
                     <NativeSelectField
                       value={guests}
@@ -443,8 +445,10 @@ ${message || 'None'}
 
                 <VStack gap={4} align="stretch">
                   <HStack gap={4} flexDirection={{ base: "column", md: "row" }}>
-                      <Field.Root fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                    <Field.Root flex={1}>
+                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
                         {t('fullName')}
+                      </Field.Label>
                       <Input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -453,8 +457,10 @@ ${message || 'None'}
                       />
                     </Field.Root>
                     
-                      <Field.Root fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                    <Field.Root flex={1}>
+                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
                         {t('email')}
+                      </Field.Label>
                       <Input
                         type="email"
                         value={email}
@@ -466,8 +472,10 @@ ${message || 'None'}
                   </HStack>
                 </VStack>
 
-                  <Field.Root fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                <Field.Root>
+                  <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
                     {t('phone')}
+                  </Field.Label>
                   <Input
                     type="tel"
                     value={phone}
@@ -477,8 +485,10 @@ ${message || 'None'}
                   />
                 </Field.Root>
 
-                  <Field.Root fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                <Field.Root>
+                  <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
                     {t('specialRequests')}
+                  </Field.Label>
                   <Textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}

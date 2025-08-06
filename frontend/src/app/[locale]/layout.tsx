@@ -1,16 +1,11 @@
-// frontend/src/app/[locale]/layout.tsx
-
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
 import {notFound} from 'next/navigation';
-import {routing} from '@/i18n/routing'; // Assuming your routing config is here
-import { Provider } from '@/components/ui/provider'
+import {routing} from '@/i18n/routing';
+import {Provider} from '@/components/ui/provider';
 import Navbar from '@/components/Navbar';
 
-// 1. ADD THIS FUNCTION: generateStaticParams
+// This function is crucial for static export with dynamic routes
 export async function generateStaticParams() {
-  // Return an array of all supported locales from your routing config
-  // For example, if routing.locales is ['en', 'pt'], this will generate:
-  // [{ locale: 'en' }, { locale: 'pt' }]
   return routing.locales.map((locale) => ({
     locale: locale,
   }));
@@ -21,32 +16,32 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
+  // REVERTING the type back to a Promise
   params: Promise<{locale: string}>;
 }) {
-  // Ensure that the incoming `locale` is valid
+  // AWAITING the params to get the locale
   const {locale} = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
- 
-  // You might need to load messages here or in a separate file if NextIntlClientProvider expects it
-  // Example (replace with your actual message loading logic if different):
-  let messages;
-  try {
-    messages = (await import(`@/messages/${locale}.json`)).default; // Adjust path as needed
-  } catch (error) {
-    notFound();
-  }
+
+  // Load the translation messages for the current locale
+  // let messages;
+  // try {
+  //   // This will work after you fix tsconfig.json
+  //   messages = (await import(`../../messages/${locale}.json`)).default;
+  // } catch (error) {
+  //   notFound();
+  // }
 
   return (
     <html lang={locale}>
       <body>
         <Provider>
-          {/* Pass the messages to NextIntlClientProvider */}
-          <NextIntlClientProvider locale={locale} messages={messages}>
+          <NextIntlClientProvider locale={locale}>
             <Navbar />
-              {children}
-            </NextIntlClientProvider>
+            {children}
+          </NextIntlClientProvider>
         </Provider>
       </body>
     </html>

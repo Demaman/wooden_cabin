@@ -1,13 +1,18 @@
+// src/components/ui/tooltip.tsx
+
 import { Tooltip as ChakraTooltip, Portal } from "@chakra-ui/react"
 import * as React from "react"
 
-export interface TooltipProps extends ChakraTooltip.RootProps {
+// Use Omit to prevent a type collision on the `children` prop
+export interface TooltipProps extends Omit<ChakraTooltip.RootProps, "children"> {
   showArrow?: boolean
   portalled?: boolean
   portalRef?: React.RefObject<HTMLElement>
   content: React.ReactNode
   contentProps?: ChakraTooltip.ContentProps
   disabled?: boolean
+  // Explicitly define your component's children prop
+  children: React.ReactNode
 }
 
 export const Tooltip = React.forwardRef<HTMLDivElement, TooltipProps>(

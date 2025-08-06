@@ -1,3 +1,5 @@
+// src/components/ui/toaster.tsx
+
 "use client"
 
 import {
@@ -17,7 +19,7 @@ export const toaster = createToaster({
 export const Toaster = () => {
   return (
     <Portal>
-      <ChakraToaster toaster={toaster} insetInline={{ mdDown: "4" }}>
+      <ChakraToaster>
         {(toast) => (
           <Toast.Root width={{ md: "sm" }}>
             {toast.type === "loading" ? (
@@ -26,13 +28,11 @@ export const Toaster = () => {
               <Toast.Indicator />
             )}
             <Stack gap="1" flex="1" maxWidth="100%">
-              {toast.title && <Toast.Title>{toast.title}</Toast.Title>}
-              {toast.description && (
-                <Toast.Description>{toast.description}</Toast.Description>
-              )}
+              {toast.title}
+              {toast.description }
             </Stack>
             {toast.action && (
-              <Toast.ActionTrigger>{toast.action.label}</Toast.ActionTrigger>
+              toast.action.label
             )}
             {toast.closable && <Toast.CloseTrigger />}
           </Toast.Root>

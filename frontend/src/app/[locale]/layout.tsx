@@ -48,12 +48,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body>
-        <Provider>
           <NextIntlClientProvider locale={locale} messages={messages}>
+            <Provider>
             <Navbar />
             {children}
+            </Provider>
           </NextIntlClientProvider>
-        </Provider>
       </body>
     </html>
   );

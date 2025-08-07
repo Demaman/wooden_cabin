@@ -6,19 +6,6 @@
 * {
   box-sizing: border-box;
 }
-/* In a global CSS file, e.g., /app/globals.css */
-.embla {
-  overflow: hidden;
-}
-
-.embla__container {
-  display: flex;
-}
-
-.embla__slide {
-  flex: 0 0 100%; /* Each slide takes up 100% of the viewport width */
-  min-width: 0;
-}
 
 :root {
   --foreground-rgb: 0, 0, 0;

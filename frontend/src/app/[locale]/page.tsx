@@ -2,9 +2,6 @@
 
 import { useTranslations } from 'next-intl';
 import { Box, Text, Heading, SimpleGrid, Button } from '@chakra-ui/react';
-import fs from 'node:fs/promises';
-import path from 'node:path';
-import { getPlaiceholder } from 'plaiceholder';
 import HeroCarousel from '@/components/HeroCarousel';
 import CabinsSection from '@/components/CabinSection';
 

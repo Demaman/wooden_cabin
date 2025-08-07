@@ -9,7 +9,6 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 
-// Define the images for your carousel
 const images = [
   '/images/views/hero-background.jpg',
   '/images/views/DeckViewWithPool.jpg',
@@ -22,12 +21,10 @@ const images = [
 export default function HeroCarousel() {
   const t = useTranslations('HomePage.hero');
 
-  // 1. Initialize the carousel with options (loop) and plugins (autoplay)
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
     Autoplay({ delay: 5000, stopOnInteraction: false }),
   ]);
 
-  // 2. Create functions to control navigation
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
   }, [emblaApi]);
@@ -37,72 +34,73 @@ export default function HeroCarousel() {
   }, [emblaApi]);
 
   return (
-    <Box
-      h="100vh"
-      position="relative"
-      display="flex"
-      alignItems="center"
-      justifyContent="center"
-      overflow="hidden" // Hide overflowing slides
-      ref={emblaRef} // Attach the carousel ref here
-    >
-      {/* 3. Create the carousel slide container */}
-      <Box display="flex" h="100%">
-        {images.map((src, index) => (
-          <Box
-            key={index}
-            flex="0 0 100%" // Each slide takes the full width
-            position="relative"
-            h="100%"
-          >
-            <Image
-              src={src}
-              alt={`Mountain landscape view ${index + 1}`}
-              fill
-              style={{ objectFit: 'cover' }}
-              priority={index === 0} // Prioritize the first image for LCP
-            />
-          </Box>
-        ))}
+    // 1. Add a parent wrapper for positioning context
+    <Box position="relative" h="100vh">
+      {/* 2. This Box is now the Embla VIEWPORT. It only contains the CONTAINER. */}
+      <Box
+        h="100%"
+        overflow="hidden" // Hide overflowing slides
+        ref={emblaRef}
+      >
+        {/* 3. This is the Embla CONTAINER. It holds the slides. */}
+        <Box display="flex" h="100%">
+          {images.map((src, index) => (
+            <Box
+              key={index}
+              flex="0 0 100%" // Each slide takes full width
+              position="relative"
+              h="100%"
+            >
+              <Image
+                src={src}
+                alt={`Mountain landscape view ${index + 1}`}
+                fill
+                style={{ objectFit: 'cover' }}
+                priority={index === 0}
+              />
+            </Box>
+          ))}
+        </Box>
       </Box>
-      
-      {/* Dark overlay for better text readability */}
+
+      {/* 4. All overlay elements are now siblings to the viewport, positioned absolutely */}
+
+      {/* Dark overlay */}
+      <Box position="absolute" inset={0} bg="blackAlpha.500" zIndex={1} />
+
+      {/* Hero Content */}
       <Box
         position="absolute"
         inset={0}
-        bg="blackAlpha.500" // Increased opacity slightly for better contrast
-        zIndex={1}
-      />
-      
-      {/* Hero Content (positioned absolutely on top) */}
-      <Box 
-        textAlign="center" 
-        color="white" 
-        px={4} 
-        position="absolute" // Changed from 'relative'
         zIndex={2}
-        maxW="4xl"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+        justifyContent="center"
+        textAlign="center"
+        color="white"
+        px={4}
       >
-        <Heading 
-          as="h1" 
-          size={{ base: '2xl', md: '4xl' }} 
-          fontWeight="bold" 
+        <Heading
+          as="h1"
+          size={{ base: '2xl', md: '4xl' }}
+          fontWeight="bold"
           mb={4}
           textShadow="2px 2px 4px rgba(0,0,0,0.3)"
+          maxW="4xl"
         >
           {t('title')}
         </Heading>
-        
-        <Text 
-          fontSize={{ base: 'xl', md: '2xl' }} 
+
+        <Text
+          fontSize={{ base: 'xl', md: '2xl' }}
           mb={8}
           textShadow="1px 1px 2px rgba(0,0,0,0.3)"
           maxW="2xl"
-          mx="auto"
         >
           {t('subtitle')}
         </Text>
-        
+
         <Link href="#cabins">
           <Button
             size="lg"
@@ -113,11 +111,10 @@ export default function HeroCarousel() {
             py={6}
             fontSize="lg"
             fontWeight="semibold"
-            _hover={{ 
+            _hover={{
               transform: 'scale(1.05)',
-              shadow: 'xl'
+              shadow: 'xl',
             }}
-            _active={{ transform: 'scale(0.98)' }}
             transition="all 0.3s ease"
             shadow="lg"
           >
@@ -126,29 +123,31 @@ export default function HeroCarousel() {
         </Link>
       </Box>
 
-      {/* 4. Add Navigation Buttons */}
+      {/* Navigation Buttons */}
       <IconButton
         aria-label="Previous slide"
         onClick={scrollPrev}
         position="absolute"
         left={{ base: 4, md: 8 }}
+        top="50%"
+        transform="translateY(-50%)"
         zIndex={2}
-        variant="solid"
         colorScheme="blackAlpha"
-      />
+      >
         <FaChevronLeft />
-      <IconButton />
+      </IconButton>
       <IconButton
         aria-label="Next slide"
         onClick={scrollNext}
         position="absolute"
         right={{ base: 4, md: 8 }}
+        top="50%"
+        transform="translateY(-50%)"
         zIndex={2}
-        variant="solid"
         colorScheme="blackAlpha"
-      />
+      >
         <FaChevronRight />
-      <IconButton/>
+      </IconButton>
     </Box>
   );
 }

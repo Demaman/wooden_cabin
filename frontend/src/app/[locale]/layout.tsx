@@ -1,11 +1,14 @@
 // app/[locale]/layout.tsx
 
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
+// Import getMessages and setRequestLocale
 import {getMessages, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {Provider} from '@/components/ui/provider';
 import Navbar from '@/components/Navbar';
+// Import the 'use' hook from React
+import { use } from 'react';
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({
@@ -13,36 +16,32 @@ export async function generateStaticParams() {
   }));
 }
 
-// The layout must be async to fetch messages
+// The layout must be async
 export default async function LocaleLayout({
   children,
-  params: { locale } // Destructure locale directly from params
+  params, // Keep params as a Promise, as expected by Next.js 15
 }: {
   children: React.ReactNode;
-  params: { locale: string }; // Update the type to be a plain object
+  params: Promise<{ locale: string }>; // This is the correct type
 }) {
-  // 1. This is still required to enable static rendering
+  // Use React.use to correctly unwrap the promise
+  const { locale } = use(params);
+
+  // This is still required to enable static rendering for next-intl
   setRequestLocale(locale);
 
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
-  // 2. Fetch messages for the current locale
-  let messages;
-  try {
-    messages = await getMessages();
-  } catch (error) {
-    // This can happen if you don't have message files for a locale.
-    // It's a good practice to handle this gracefully.
-    notFound();
-  }
+  // Fetch the translation messages for the current locale on the server
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <body>
         <Provider>
-          {/* 3. Pass the fetched messages to the provider */}
+          {/* Pass the fetched messages to the client provider */}
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar />
             {children}

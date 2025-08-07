@@ -2,8 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 import { Box, Text, Heading, SimpleGrid, Button } from '@chakra-ui/react';
-import Hero from '@/components/Hero';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { getPlaiceholder } from 'plaiceholder';
+import HeroCarousel from '@/components/HeroCarousel';
 import CabinsSection from '@/components/CabinSection';
+
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -11,8 +15,8 @@ export default function HomePage() {
   return (
     <Box>
       {/* Hero Section */}
-      <Hero />
-
+      <HeroCarousel />
+      
       {/* Featured Event Section */}
       <Box py={16} bg="blue.50">
         <Box maxW="6xl" mx="auto" px={4} textAlign="center">

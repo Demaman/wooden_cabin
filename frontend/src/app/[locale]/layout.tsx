@@ -1,10 +1,14 @@
+// app/[locale]/layout.tsx
+
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
+// Add this import
+import {setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {Provider} from '@/components/ui/provider';
 import Navbar from '@/components/Navbar';
 import {use} from 'react';
-// This function is crucial for static export with dynamic routes
+
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({
     locale: locale,
@@ -16,23 +20,16 @@ export default async function LocaleLayout({
   params
 }: {
   children: React.ReactNode;
-  // REVERTING the type back to a Promise
   params: Promise<{locale: string}>;
 }) {
-  // AWAITING the params to get the locale
   const {locale} = await use(params);
+
+  // Add this line right after getting the locale
+  setRequestLocale(locale);
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
-
-  // Load the translation messages for the current locale
-  // let messages;
-  // try {
-  //   // This will work after you fix tsconfig.json
-  //   messages = (await import(`../../messages/${locale}.json`)).default;
-  // } catch (error) {
-  //   notFound();
-  // }
 
   return (
     <html lang={locale}>

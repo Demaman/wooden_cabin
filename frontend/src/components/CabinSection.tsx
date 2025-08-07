@@ -29,7 +29,7 @@ const CabinsSection = () => {
       id: 1,
       name: cabinData('cabin1.name'),
       description: cabinData('cabin1.description'),
-      imageUrl: "/images/cabins/cabin-1.jpg",
+      imageUrl: "../../public/images/cabins/cabin-1.jpg",
       pricePerNight: Number(cabinData('cabin1.price')),
       maxGuests: 2,
       sqFt: 25

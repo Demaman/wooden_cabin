@@ -1,7 +1,6 @@
 // src/app/[locale]/layout.tsx
 
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
-// Import getTranslations for metadata
 import {getMessages, getTranslations, setRequestLocale} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
@@ -10,20 +9,20 @@ import Navbar from '@/components/Navbar';
 import { use } from 'react';
 import type { Metadata } from 'next';
 
-// This function tells Next.js which locales to build statically
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({
     locale: locale,
   }));
 }
 
-// This new function generates metadata for each locale
+// This function generates metadata for each locale
 export async function generateMetadata({
-  params: { locale },
+  params, // Keep params as a top-level prop
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>; // FIX: Type params as a Promise to match the layout
 }): Promise<Metadata> {
-  // Use getTranslations to load the messages for the given locale
+  // Await the promise to get the resolved locale
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
   return {
@@ -37,10 +36,11 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale: string }>; // This is correct for Next.js 15
 }) {
   const { locale } = use(params);
 
+  // This is correct and necessary for static rendering
   setRequestLocale(locale);
 
   if (!hasLocale(routing.locales, locale)) {

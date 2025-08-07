@@ -6,7 +6,6 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {Provider} from '@/components/ui/provider';
 import Navbar from '@/components/Navbar';
-import { use } from 'react';
 import type { Metadata } from 'next';
 
 export function generateStaticParams() {
@@ -15,13 +14,11 @@ export function generateStaticParams() {
   }));
 }
 
-// This function generates metadata for each locale
 export async function generateMetadata({
-  params, // Keep params as a top-level prop
+  params,
 }: {
-  params: Promise<{ locale: string }>; // FIX: Type params as a Promise to match the layout
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  // Await the promise to get the resolved locale
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata' });
 
@@ -36,11 +33,10 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>; // This is correct for Next.js 15
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = use(params);
+  const { locale } = await params;
 
-  // This is correct and necessary for static rendering
   setRequestLocale(locale);
 
   if (!hasLocale(routing.locales, locale)) {

@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'; // Optional: for global metadata
 
 import './globals.css';
+import { Providers } from './provider';
 export const metadata: Metadata = {
   title: 'Vita Cabanas',
   description: 'Your beautiful life in the mountains of Nova Trento SC',
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="pt-BR"> {/* Set your default language here, or 'en' */}
       <body>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );

@@ -324,9 +324,10 @@ ${message || 'None'}
                 <VStack gap={4} align="stretch">
                   <HStack gap={4} flexDirection={{ base: "column", md: "row" }}>
                     <Field.Root flex={1}>
-                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
-                        {t('checkIn')}
-                      </Field.Label>
+                      <Field.Label/>
+                        <Text fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                          {t('checkIn')}
+                        </Text>
                       <Input
                         type="date"
                         value={checkIn}
@@ -337,9 +338,8 @@ ${message || 'None'}
                     </Field.Root>
                     
                     <Field.Root flex={1}>
-                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                      <Field.Label/>
                         {t('checkOut')}
-                      </Field.Label>
                       <Input
                         type="date"
                         value={checkOut}
@@ -353,9 +353,8 @@ ${message || 'None'}
 
                 {/* Guests */}
                 <Field.Root>
-                  <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                  <Field.Label />
                     {t('numberOfGuests')}
-                  </Field.Label>
                   <NativeSelectRoot>
                     <NativeSelectField
                       value={guests}
@@ -446,9 +445,8 @@ ${message || 'None'}
                 <VStack gap={4} align="stretch">
                   <HStack gap={4} flexDirection={{ base: "column", md: "row" }}>
                     <Field.Root flex={1}>
-                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                      <Field.Label />
                         {t('fullName')}
-                      </Field.Label>
                       <Input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -458,9 +456,8 @@ ${message || 'None'}
                     </Field.Root>
                     
                     <Field.Root flex={1}>
-                      <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                      <Field.Label />
                         {t('email')}
-                      </Field.Label>
                       <Input
                         type="email"
                         value={email}
@@ -473,9 +470,8 @@ ${message || 'None'}
                 </VStack>
 
                 <Field.Root>
-                  <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                  <Field.Label />
                     {t('phone')}
-                  </Field.Label>
                   <Input
                     type="tel"
                     value={phone}
@@ -486,9 +482,8 @@ ${message || 'None'}
                 </Field.Root>
 
                 <Field.Root>
-                  <Field.Label fontSize={{ base: "sm", md: "md" }} fontWeight="medium">
+                  <Field.Label />
                     {t('specialRequests')}
-                  </Field.Label>
                   <Textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}

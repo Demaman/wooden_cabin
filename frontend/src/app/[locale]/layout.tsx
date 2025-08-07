@@ -3,6 +3,7 @@ import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import {Provider} from '@/components/ui/provider';
 import Navbar from '@/components/Navbar';
+import { unstable_setRequestLocale } from 'next-intl/server';
 
 // This function is crucial for static export with dynamic routes
 export async function generateStaticParams() {
@@ -21,6 +22,8 @@ export default async function LocaleLayout({
 }) {
   // AWAITING the params to get the locale
   const {locale} = await params;
+  unstable_setRequestLocale(locale);
+
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }

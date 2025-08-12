@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Box, Text, Heading, SimpleGrid, Button } from '@chakra-ui/react';
 import HeroCarousel from '@/components/HeroCarousel';
 import CabinsSection from '@/components/CabinSection';
-
+import FeaturedEvents from '@/components/FeaturedEvents';
 
 export default function HomePage() {
   const t = useTranslations('HomePage');
@@ -14,25 +14,8 @@ export default function HomePage() {
       {/* Hero Section */}
       <HeroCarousel />
       
-      {/* Featured Event Section */}
-      <Box py={16} bg="blue.50">
-        <Box maxW="6xl" mx="auto" px={4} textAlign="center">
-          <Heading as="h2" size="xl" color="blue.800" mb={4}>
-            {t('featuredEvent.title')}
-          </Heading>
-          <Text fontSize="lg" mb={6} color="gray.700">
-            {t('featuredEvent.description')}
-          </Text>
-          <Button 
-            colorScheme="blue" 
-            size="lg"
-            _hover={{ transform: 'scale(1.05)' }}
-            transition="all 0.3s"
-          >
-            {t('featuredEvent.cta')}
-          </Button>
-        </Box>
-      </Box>
+      {/* 2. Replace the old section with the new component */}
+      <FeaturedEvents />
 
       {/* Cabins Section with Booking Modal */}
       <CabinsSection />

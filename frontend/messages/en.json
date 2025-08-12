@@ -18,10 +18,8 @@
       "subtitle": "Rustic wood cabins nestled in the mountains",
       "cta": "View Our Cabins"
     },
-    "featuredEvent": {
-      "title": "Featured Event: Mons Ultra Trail - November 2025",
-      "description": "Book your accommodation now for this international trail running event!",
-      "cta": "Find Rentals for the Trail"
+    "events": {
+      "title": "Upcoming Events"
     },
     "cabins": {
       "title": "Our Wooden Cabins",

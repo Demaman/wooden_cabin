@@ -18,11 +18,10 @@
       "subtitle": "Cabanas rústicas de madeira aninhadas nas montanhas",
       "cta": "Ver Nossas Cabanas"
     },
-    "featuredEvent": {
-      "title": "Evento em Destaque: Mons Ultra Trail - Novembro 2025",
-      "description": "Reserve sua acomodação agora para este evento internacional de trail running!",
-      "cta": "Encontrar Aluguéis para a Trilha"
+    "events": {
+      "title": "Próximos Eventos"
     },
+    
     "cabins": {
       "title": "Nossas Cabanas de Madeira",
       "guests": "hóspedes",

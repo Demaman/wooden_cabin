@@ -16,7 +16,7 @@ const Navbar = () => {
 
   // Simplified the navLinks array - the `locale` prop isn't needed here.
   const navLinks = [
-    { name: t('ourCabins'), href: '/#cabins', id: 'cabins', isAnchor: true },
+    // { name: t('ourCabins'), href: '/#cabins', id: 'cabins', isAnchor: true },
     { name: t('about'), href: '/about', id: 'about', isAnchor: false },
     { name: t('location'), href: '/#location', id: 'location', isAnchor: true },
   ];

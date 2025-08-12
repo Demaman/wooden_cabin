@@ -6,6 +6,7 @@
   "Navigation": {
     "brand": "Recanto Vita Bella",
     "ourCabins": "Nossas Cabanas",
+    "locale": "pt",
     "about": "Sobre",
     "location": "Localização", 
     "contact": "Contato",
@@ -106,19 +107,19 @@
   },
   "CabinData": {
     "cabin1": {
-      "name": "Cabana da Montanha 1",
+      "name": "Cabana da Montanha Branca",
       "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
-      "price": "300"
+      "price": "320"
     },
     "cabin2": {
-      "name": "Cabana da Montanha 2", 
+      "name": "Cabana da Montanha Vermelha", 
       "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
-      "price": "300"
+      "price": "320"
     },
     "cabin3": {
-      "name": "Cabana da Montanha 3",
+      "name": "Cabana da Montanha Amarela",
       "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
-      "price": "300"
+      "price": "320"
     },
     "cabin4": {
       "name": "Cabana da Montanha 4",

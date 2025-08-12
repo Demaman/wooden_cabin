@@ -1,3 +1,4 @@
+// components/CabinSection.tsx
 'use client';
 
 import { useState } from 'react';
@@ -5,31 +6,47 @@ import { useTranslations } from 'next-intl';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import PropertyCard from './PropertyCard';
 import BookingModal from './BookingModal';
+import ImageLightbox from './ImageLightbox';
 
-// Define Property type
+// Define Property type with an array for images
 export interface Property {
   id: number;
   name: string;
   description: string;
-  imageUrl: string;
+  imageUrls: string[];
   pricePerNight: number;
   maxGuests: number;
   sqFt: number;
 }
 
+const SHARED_CABIN_IMAGES = [
+  "/images/cabins/cabin-1.jpg",
+  "/images/cabins/cabin-1-table.jpg",
+  "/images/cabins/CabinDoorOpened.jpg",
+  "/images/cabins/CabinFromDoor.jpg",
+  "/images/cabins/CabinSide.jpg",
+  "/images/cabins/CabinTransversal.jpg"
+];
+
 const CabinsSection = () => {
+  // State for Booking Modal
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  // State for Image Lightbox
+  const [lightboxImages, setLightboxImages] = useState<string[]>([]);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  
   const t = useTranslations('HomePage.cabins');
   const cabinData = useTranslations('CabinData');
 
-  // Define properties with translations
+  // 2. Define properties using the shared image constant.
   const properties: Property[] = [
     {
       id: 1,
       name: cabinData('cabin1.name'),
       description: cabinData('cabin1.description'),
-      imageUrl: "/images/cabins/cabin-1.jpg",
+      imageUrls: SHARED_CABIN_IMAGES, // Use the shared array
       pricePerNight: Number(cabinData('cabin1.price')),
       maxGuests: 2,
       sqFt: 25
@@ -38,7 +55,7 @@ const CabinsSection = () => {
       id: 2,
       name: cabinData('cabin2.name'),
       description: cabinData('cabin2.description'),
-      imageUrl: "/images/cabins/cabin-2.jpg",
+      imageUrls: SHARED_CABIN_IMAGES, // Use the shared array
       pricePerNight: Number(cabinData('cabin2.price')),
       maxGuests: 2,
       sqFt: 25
@@ -47,7 +64,7 @@ const CabinsSection = () => {
       id: 3,
       name: cabinData('cabin3.name'),
       description: cabinData('cabin3.description'),
-      imageUrl: "/images/cabins/cabin-3.jpg",
+      imageUrls: SHARED_CABIN_IMAGES, // Use the shared array
       pricePerNight: Number(cabinData('cabin3.price')),
       maxGuests: 2,
       sqFt: 25
@@ -59,13 +76,23 @@ const CabinsSection = () => {
     setIsModalOpen(true);
   };
 
+  const handleImageClick = (property: Property) => {
+    setLightboxImages(property.imageUrls);
+    setIsLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setIsLightboxOpen(false);
+    setLightboxImages([]);
+  };
+
   const closeModal = () => {
     setIsModalOpen(false);
     setSelectedProperty(null);
   };
 
   return (
-    <Box as="section" id="cabins" py={16} bg="white">
+    <Box as="section" id="cabins" py={16} bg="gray.50" scrollMarginTop="300px">
       <Box maxW="6xl" mx="auto" px={4}>
         <Heading 
           as="h2" 
@@ -83,6 +110,7 @@ const CabinsSection = () => {
               key={property.id}
               property={property}
               onBookNow={handleBookNow}
+              onImageClick={handleImageClick}
             />
           ))}
         </SimpleGrid>
@@ -95,6 +123,12 @@ const CabinsSection = () => {
           property={selectedProperty}
         />
       )}
+      
+      <ImageLightbox
+        isOpen={isLightboxOpen}
+        onClose={closeLightbox}
+        images={lightboxImages}
+      />
     </Box>
   );
 };

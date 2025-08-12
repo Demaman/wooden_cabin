@@ -5,6 +5,7 @@
   },
   "Navigation": {
     "brand": "Recanto Vita Bella",
+    "locale": "en",
     "ourCabins": "Our Cabins",
     "about": "About",
     "location": "Location",
@@ -105,17 +106,17 @@
   },
   "CabinData": {
     "cabin1": {
-      "name": "Mountain Cabin 1",
+      "name": "Mountain Cabin White",
       "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere.",
       "price": "90"
     },
     "cabin2": {
-      "name": "Mountain Cabin 2",
+      "name": "Mountain Cabin Red",
       "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere.",
       "price": "90"
     },
     "cabin3": {
-      "name": "Mountain Cabin 3",
+      "name": "Mountain Cabin Yellow",
       "description": "Cozy cabin nestled in nature with stunning mountain views and a family-friendly atmosphere.",
       "price": "90"
     },

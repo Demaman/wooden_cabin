@@ -1,3 +1,4 @@
+// components/PropertyCard.tsx
 'use client';
 
 import Image from 'next/image';
@@ -13,14 +14,15 @@ import {
   HStack
 } from '@chakra-ui/react';
 import { FaUser, FaHome } from 'react-icons/fa';
-import { Property } from './CabinSection';
+import { Property } from './CabinSection'; // This import still works
 
 interface PropertyCardProps {
   property: Property;
   onBookNow: (property: Property) => void;
+  onImageClick: (property: Property) => void; // NEW: Add prop for image click
 }
 
-const PropertyCard = ({ property, onBookNow }: PropertyCardProps) => {
+const PropertyCard = ({ property, onBookNow, onImageClick }: PropertyCardProps) => {
   const t = useTranslations('HomePage.cabins');
 
   return (
@@ -35,10 +37,15 @@ const PropertyCard = ({ property, onBookNow }: PropertyCardProps) => {
         transform: 'translateY(-4px)'
       }}
     >
-      {/* Property Image */}
-      <Box h={64} position="relative">
+      {/* Property Image - Now clickable */}
+      <Box
+        h={64}
+        position="relative"
+        onClick={() => onImageClick(property)} // NEW: Click handler
+        cursor="pointer" // NEW: Add pointer cursor to indicate it's clickable
+      >
         <Image
-          src={property.imageUrl}
+          src={property.imageUrls[0]} // CHANGED: Use first image of the array
           alt={property.name}
           fill
           style={{ objectFit: 'cover' }}
@@ -46,7 +53,7 @@ const PropertyCard = ({ property, onBookNow }: PropertyCardProps) => {
         />
       </Box>
       
-      {/* Property Content */}
+      {/* Property Content (unchanged) */}
       <Box p={6}>
         <Heading as="h3" size="md" mb={2} color="gray.800">
           {property.name}
@@ -56,7 +63,6 @@ const PropertyCard = ({ property, onBookNow }: PropertyCardProps) => {
           {property.description}
         </Text>
         
-        {/* Property Details */}
         <Flex direction="column" gap={2} mb={4}>
           <HStack>
             <Icon as={FaUser} color="green.600" boxSize={4} />
@@ -73,16 +79,15 @@ const PropertyCard = ({ property, onBookNow }: PropertyCardProps) => {
           </HStack>
         </Flex>
         
-        {/* Price and Actions */}
         <Flex justify="space-between" align="center" flexWrap="wrap" gap={2}>
           <Box>
             <Text fontSize="xl" fontWeight="bold" color="green.700">
-              ${property.pricePerNight}/{t('night')+" "+t('money')}
+              ${property.pricePerNight}/{t('night')}
             </Text>
           </Box>
           
           <HStack gap={2}>
-            <Link href={`/properties/${property.id}`}>
+            {/* <Link href={`/properties/${property.id}`}>
               <Button
                 variant="outline"
                 colorScheme="green"
@@ -91,14 +96,12 @@ const PropertyCard = ({ property, onBookNow }: PropertyCardProps) => {
               >
                 {t('details')}
               </Button>
-            </Link>
+            </Link> */}
             
             <Button
               colorScheme="green"
               size="sm"
               onClick={() => onBookNow(property)}
-              _hover={{ transform: 'scale(1.05)' }}
-              transition="all 0.2s"
             >
               {t('bookNow')}
             </Button>

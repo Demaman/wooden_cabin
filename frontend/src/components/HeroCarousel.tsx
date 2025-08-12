@@ -63,12 +63,8 @@ export default function HeroCarousel() {
         </Box>
       </Box>
 
-      {/* 4. All overlay elements are now siblings to the viewport, positioned absolutely */}
-
-      {/* Dark overlay */}
       <Box position="absolute" inset={0} bg="blackAlpha.500" zIndex={1} />
 
-      {/* Hero Content */}
       <Box
         position="absolute"
         inset={0}
@@ -100,8 +96,7 @@ export default function HeroCarousel() {
         >
           {t('subtitle')}
         </Text>
-
-        <Link href="#cabins">
+        <Link href="#cabins" scroll={true} passHref>
           <Button
             size="lg"
             colorScheme="green"

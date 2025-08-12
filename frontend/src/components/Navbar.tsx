@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { Box, Flex, Text, HStack, IconButton } from '@chakra-ui/react';
 import { FaHome, FaBars, FaTimes, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
@@ -11,12 +11,14 @@ import LanguageSwitcher from './LanguageSwitcher';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
   const t = useTranslations('Navigation');
 
+  // Simplified the navLinks array - the `locale` prop isn't needed here.
   const navLinks = [
-    { name: t('ourCabins'), href: '/#cabins', id: 'cabins' },
-    { name: t('about'), href: '/about', id: 'about' },
-    { name: t('location'), href: '/#location', id: 'location' },
+    { name: t('ourCabins'), href: '/#cabins', id: 'cabins', isAnchor: true },
+    { name: t('about'), href: '/about', id: 'about', isAnchor: false },
+    { name: t('location'), href: '/#location', id: 'location', isAnchor: true },
   ];
 
   const socialLinks = [
@@ -25,26 +27,56 @@ const Navbar = () => {
       href: 'https://wa.me/5547997223196',
       icon: FaWhatsapp,
       color: 'green.500',
-      hoverColor: 'green.600'
+      hoverColor: 'green.600',
     },
     {
       name: 'Instagram',
       href: 'https://www.instagram.com/vita.bella25?igsh=bzRmcnF2aTE4enpt',
       icon: FaInstagram,
       color: 'pink.500',
-      hoverColor: 'pink.600'
-    }
+      hoverColor: 'pink.600',
+    },
   ];
 
+  // --- UPDATED LOGIC ---
   const isActiveLink = (href: string) => {
+    // An anchor link is "active" if we are on any homepage (e.g., /en, /pt-BR)
     if (href.startsWith('/#')) {
-      return pathname === '/' || pathname.endsWith('/');
+      // Homepage paths like '/en' have 2 parts when split: ['', 'en']
+      return pathname.split('/').length === 2;
     }
+    // For other pages, check if the path ends with the link's href
     return pathname.endsWith(href);
   };
-
-  const handleLogoClick = () => {
+  
+  // --- UPDATED LOGIC ---
+  const handleAnchorScroll = (id: string) => {
     setIsOpen(false);
+    
+    // Check if we are on a homepage by counting path segments
+    const isHomePage = pathname.split('/').length === 2;
+    
+    if (isHomePage) {
+      // If yes, perform the smooth scroll
+      const targetElement = document.getElementById(id);
+      const navbarElement = document.getElementById('main-navbar');
+
+      if (targetElement && navbarElement) {
+        const navbarHeight = navbarElement.offsetHeight;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = targetPosition - navbarHeight;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
+    } else {
+      // If we are on another page, navigate to the homepage with the hash
+      // We construct the root path dynamically using the current locale
+      const locale = pathname.split('/')[1];
+      router.push(`/${locale}/#` + id);
+    }
   };
 
   const handleLinkClick = () => {
@@ -57,11 +89,10 @@ const Navbar = () => {
   };
 
   return (
-    <Box bg="white" shadow="lg" position="sticky" top={0} zIndex={50}>
+    <Box id="main-navbar" bg="white" shadow="lg" position="sticky" top={0} zIndex={50}>
       <div style={{ maxWidth: '80rem', margin: '0 auto'}}>
         <Flex minH={16} py={4} align="center" justify="space-between">
-          {/* Logo */}
-          <Link href="/" onClick={handleLogoClick}>
+          <Link href="/">
             <Flex align="center" cursor="pointer">
               <Box color="green.500" mr={2}>
                 <FaHome size={32} />
@@ -74,21 +105,34 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <Flex display={{ base: 'none', md: 'flex' }} gap={6} align="center">
-            {navLinks.map((link) => (
-              <Link key={link.id} href={link.href} onClick={handleLinkClick}>
+            {navLinks.map((link) =>
+              link.isAnchor ? (
                 <Text
+                  key={link.id}
+                  onClick={() => handleAnchorScroll(link.id)}
+                  cursor="pointer"
                   fontSize="md"
-                  fontWeight={isActiveLink(link.href) ? 'medium' : 'normal'}
-                  color={isActiveLink(link.href) ? 'green.500' : 'gray.700'}
+                  color="gray.700"
                   _hover={{ color: 'green.500' }}
                   transition="color 0.3s"
                 >
                   {link.name}
                 </Text>
-              </Link>
-            ))}
+              ) : (
+                <Link key={link.id} href={link.href} onClick={handleLinkClick}>
+                  <Text
+                    fontSize="md"
+                    fontWeight={isActiveLink(link.href) ? 'medium' : 'normal'}
+                    color={isActiveLink(link.href) ? 'green.500' : 'gray.700'}
+                    _hover={{ color: 'green.500' }}
+                    transition="color 0.3s"
+                  >
+                    {link.name}
+                  </Text>
+                </Link>
+              )
+            )}
             
-            {/* Social Media Icons */}
             <HStack gap={2} ml={2}>
               {socialLinks.map((social) => {
                 const IconComponent = social.icon;
@@ -134,25 +178,40 @@ const Navbar = () => {
         {isOpen && (
           <Box pb={4} display={{ md: 'none' }} borderTopWidth={1} borderColor="gray.200">
             <Flex direction="column" gap={2} pt={4}>
-              {navLinks.map((link) => (
-                <Link key={link.id} href={link.href}>
+              {navLinks.map((link) =>
+                link.isAnchor ? (
                   <Text
+                    key={link.id}
+                    onClick={() => handleAnchorScroll(link.id)}
+                    cursor="pointer"
                     py={2}
                     px={2}
                     fontSize="md"
-                    fontWeight={isActiveLink(link.href) ? 'medium' : 'normal'}
-                    color={isActiveLink(link.href) ? 'green.500' : 'gray.700'}
-                    onClick={handleLinkClick}
-                    cursor="pointer"
+                    color="gray.700"
                     _hover={{ color: 'green.500' }}
                     transition="color 0.3s"
                   >
                     {link.name}
                   </Text>
-                </Link>
-              ))}
+                ) : (
+                  <Link key={link.id} href={link.href}>
+                    <Text
+                      py={2}
+                      px={2}
+                      fontSize="md"
+                      fontWeight={isActiveLink(link.href) ? 'medium' : 'normal'}
+                      color={isActiveLink(link.href) ? 'green.500' : 'gray.700'}
+                      onClick={handleLinkClick}
+                      cursor="pointer"
+                      _hover={{ color: 'green.500' }}
+                      transition="color 0.3s"
+                    >
+                      {link.name}
+                    </Text>
+                  </Link>
+                )
+              )}
               
-              {/* Mobile Social Media */}
               <Box py={2} px={2}>
                 <Text fontSize="sm" color="gray.600" mb={2} fontWeight="medium">
                   {t('connect')}

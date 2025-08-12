@@ -43,7 +43,7 @@ const AboutPage = () => {
           <div className="md:w-1/2 w-full">
             <div className="relative h-80 md:h-96 w-full overflow-hidden rounded-lg shadow-xl">
               <Image 
-                src="/images/about/ricardo.jpg"
+                src="/images/about/ricardo.jpeg"
                 alt="Ricardo Demaman, fundador das cabanas" 
                 fill
                 style={{ objectFit: 'cover' }}

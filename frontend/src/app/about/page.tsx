@@ -43,7 +43,7 @@ const AboutPage = () => {
           <div className="md:w-1/2 w-full">
             <div className="relative h-80 md:h-96 w-full overflow-hidden rounded-lg shadow-xl">
               <Image 
-                src="/images/people/ricardo-demaman.jpg"
+                src="/images/about/ricardo.jpg"
                 alt="Ricardo Demaman, fundador das cabanas" 
                 fill
                 style={{ objectFit: 'cover' }}
@@ -67,7 +67,7 @@ const AboutPage = () => {
           <div className="md:w-1/2 w-full">
             <div className="relative h-80 md:h-96 w-full overflow-hidden rounded-lg shadow-xl">
               <Image 
-                src="/images/people/perion-demaman.jpg"
+                src="/images/about/perion.jpg"
                 alt="Perion Ferreira Demaman, gerenciando as cabanas" 
                 fill
                 style={{ objectFit: 'cover' }}

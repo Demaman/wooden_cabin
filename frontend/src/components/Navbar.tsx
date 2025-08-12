@@ -14,11 +14,11 @@ const Navbar = () => {
   const router = useRouter();
   const t = useTranslations('Navigation');
 
-  // Simplified the navLinks array - the `locale` prop isn't needed here.
+  // STEP 1: Define link types for clarity (anchor, internal, external)
   const navLinks = [
-    // { name: t('ourCabins'), href: '/#cabins', id: 'cabins', isAnchor: true },
-    { name: t('about'), href: '/about', id: 'about', isAnchor: false },
-    { name: t('location'), href: '/#location', id: 'location', isAnchor: true },
+    // { name: t('ourCabins'), id: 'cabins', type: 'anchor' },
+    { name: t('about'), href: '/about', type: 'internal' },
+    { name: t('location'), href: 'https://maps.app.goo.gl/PA4bAos4KQt6V5W87', type: 'external' },
   ];
 
   const socialLinks = [
@@ -38,42 +38,27 @@ const Navbar = () => {
     },
   ];
 
-  // --- UPDATED LOGIC ---
   const isActiveLink = (href: string) => {
-    // An anchor link is "active" if we are on any homepage (e.g., /en, /pt-BR)
     if (href.startsWith('/#')) {
-      // Homepage paths like '/en' have 2 parts when split: ['', 'en']
       return pathname.split('/').length === 2;
     }
-    // For other pages, check if the path ends with the link's href
     return pathname.endsWith(href);
   };
   
-  // --- UPDATED LOGIC ---
   const handleAnchorScroll = (id: string) => {
     setIsOpen(false);
-    
-    // Check if we are on a homepage by counting path segments
     const isHomePage = pathname.split('/').length === 2;
     
     if (isHomePage) {
-      // If yes, perform the smooth scroll
       const targetElement = document.getElementById(id);
       const navbarElement = document.getElementById('main-navbar');
-
       if (targetElement && navbarElement) {
         const navbarHeight = navbarElement.offsetHeight;
         const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
         const offsetPosition = targetPosition - navbarHeight;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth',
-        });
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       }
     } else {
-      // If we are on another page, navigate to the homepage with the hash
-      // We construct the root path dynamically using the current locale
       const locale = pathname.split('/')[1];
       router.push(`/${locale}/#` + id);
     }
@@ -105,33 +90,52 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <Flex display={{ base: 'none', md: 'flex' }} gap={6} align="center">
-            {navLinks.map((link) =>
-              link.isAnchor ? (
-                <Text
-                  key={link.id}
-                  onClick={() => handleAnchorScroll(link.id)}
-                  cursor="pointer"
-                  fontSize="md"
-                  color="gray.700"
-                  _hover={{ color: 'green.500' }}
-                  transition="color 0.3s"
-                >
-                  {link.name}
-                </Text>
-              ) : (
-                <Link key={link.id} href={link.href} onClick={handleLinkClick}>
+            {/* STEP 2: Update rendering logic for all link types */}
+            {navLinks.map((link) => {
+              if (link.type === 'anchor') {
+                return (
+                  <Text
+                    key={link.id}
+                    onClick={() => handleAnchorScroll(link.id!)}
+                    cursor="pointer"
+                    fontSize="md"
+                    color="gray.700"
+                    _hover={{ color: 'green.500' }}
+                    transition="color 0.3s"
+                  >
+                    {link.name}
+                  </Text>
+                );
+              }
+              if (link.type === 'external') {
+                return (
+                  <a key={link.name} href={link.href!} target="_blank" rel="noopener noreferrer">
+                    <Text
+                      fontSize="md"
+                      color="gray.700"
+                      _hover={{ color: 'green.500' }}
+                      transition="color 0.3s"
+                    >
+                      {link.name}
+                    </Text>
+                  </a>
+                );
+              }
+              // Default to internal link
+              return (
+                <Link key={link.name} href={link.href!} onClick={handleLinkClick}>
                   <Text
                     fontSize="md"
-                    fontWeight={isActiveLink(link.href) ? 'medium' : 'normal'}
-                    color={isActiveLink(link.href) ? 'green.500' : 'gray.700'}
+                    fontWeight={isActiveLink(link.href!) ? 'medium' : 'normal'}
+                    color={isActiveLink(link.href!) ? 'green.500' : 'gray.700'}
                     _hover={{ color: 'green.500' }}
                     transition="color 0.3s"
                   >
                     {link.name}
                   </Text>
                 </Link>
-              )
-            )}
+              );
+            })}
             
             <HStack gap={2} ml={2}>
               {socialLinks.map((social) => {
@@ -161,15 +165,7 @@ const Navbar = () => {
             <LanguageSwitcher />
           </Flex>
 
-          {/* Mobile menu button */}
-          <Box
-            display={{ base: 'block', md: 'none' }}
-            onClick={() => setIsOpen(!isOpen)}
-            cursor="pointer"
-            p={2}
-            _hover={{ bg: 'gray.100' }}
-            rounded="md"
-          >
+          <Box display={{ base: 'block', md: 'none' }} onClick={() => setIsOpen(!isOpen)} cursor="pointer" p={2} _hover={{ bg: 'gray.100' }} rounded="md">
             {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
           </Box>
         </Flex>
@@ -178,39 +174,46 @@ const Navbar = () => {
         {isOpen && (
           <Box pb={4} display={{ md: 'none' }} borderTopWidth={1} borderColor="gray.200">
             <Flex direction="column" gap={2} pt={4}>
-              {navLinks.map((link) =>
-                link.isAnchor ? (
-                  <Text
-                    key={link.id}
-                    onClick={() => handleAnchorScroll(link.id)}
-                    cursor="pointer"
-                    py={2}
-                    px={2}
-                    fontSize="md"
-                    color="gray.700"
-                    _hover={{ color: 'green.500' }}
-                    transition="color 0.3s"
-                  >
-                    {link.name}
-                  </Text>
-                ) : (
-                  <Link key={link.id} href={link.href}>
+              {/* STEP 3: Apply same logic to mobile menu */}
+              {navLinks.map((link) => {
+                if (link.type === 'anchor') {
+                  return (
                     <Text
-                      py={2}
-                      px={2}
-                      fontSize="md"
-                      fontWeight={isActiveLink(link.href) ? 'medium' : 'normal'}
-                      color={isActiveLink(link.href) ? 'green.500' : 'gray.700'}
-                      onClick={handleLinkClick}
+                      key={link.id}
+                      onClick={() => handleAnchorScroll(link.id!)}
                       cursor="pointer"
-                      _hover={{ color: 'green.500' }}
-                      transition="color 0.3s"
+                      py={2} px={2} fontSize="md" color="gray.700"
+                      _hover={{ color: 'green.500' }} transition="color 0.3s"
+                    >
+                      {link.name}
+                    </Text>
+                  );
+                }
+                if (link.type === 'external') {
+                  return (
+                    <a key={link.name} href={link.href!} target="_blank" rel="noopener noreferrer">
+                      <Text
+                        py={2} px={2} fontSize="md" color="gray.700"
+                        _hover={{ color: 'green.500' }} transition="color 0.3s"
+                      >
+                        {link.name}
+                      </Text>
+                    </a>
+                  );
+                }
+                return (
+                  <Link key={link.name} href={link.href!} onClick={handleLinkClick}>
+                    <Text
+                      py={2} px={2} fontSize="md"
+                      fontWeight={isActiveLink(link.href!) ? 'medium' : 'normal'}
+                      color={isActiveLink(link.href!) ? 'green.500' : 'gray.700'}
+                      _hover={{ color: 'green.500' }} transition="color 0.3s"
                     >
                       {link.name}
                     </Text>
                   </Link>
-                )
-              )}
+                );
+              })}
               
               <Box py={2} px={2}>
                 <Text fontSize="sm" color="gray.600" mb={2} fontWeight="medium">

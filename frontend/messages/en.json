@@ -47,6 +47,26 @@
       }
     }
   },
+  "AboutPage": {
+    "mainTitle": "A Legacy Built by Hand",
+    "mainSubtitle": "Welcome to our mountain escape, a place born from a father's dream and continued with a son's passion. More than just cabins, this is our family's story, shared with you.",
+    "founderTitle": "Our Founder: Ricardo Demaman",
+    "founderBio": "[Fill in Ricardo's story here. For example: For years, Ricardo Demaman, a master craftsman with a deep love for the mountains, envisioned a place where people could disconnect from the noise and reconnect with nature. He began this journey in 2018, pouring his heart and soul into every log and joint, building not just structures, but sanctuaries.]",
+    "founderPhilosophy": "His philosophy was simple: build with integrity, respect the land, and create a space that feels like home. Every cabin stands as a testament to his dedication and craftsmanship.",
+    "founderAltText": "Ricardo Demaman, founder of the cabins",
+    "sonTitle": "A Modern Touch: Perion Demaman",
+    "sonBio": "Following in his father's footsteps, I, Perion, have taken the helm to carry on the legacy. While my father built the physical foundation, I build the bridges that connect our peaceful retreat with you.",
+    "sonMission": "As the developer, marketer, and your point of contact, my mission is to ensure your experience is seamless from the moment you find us online to the day you check out. I blend the timeless tradition of our cabins with the modern convenience you deserve.",
+    "sonAltText": "Perion Ferreira Demaman, managing the cabins",
+    "philosophyTitle": "Your Mountain Getaway",
+    "philosophyMission": "[Fill in your mission for guests here. For example: We believe in the magic of simple moments: the warmth of a fire, the taste of fresh mountain air, and the sound of silence. Our goal is to provide you with a canvas to paint your own unforgettable memories.]",
+    "features": {
+      "feature1": "Family-run with a personal touch",
+      "feature2": "Handcrafted with local materials",
+      "feature3": "Perfect for couples and families",
+      "feature4": "An authentic escape into nature"
+    }
+  },
   "BookingModal": {
     "bookProperty": "Book Property",
     "perNight": "per night",

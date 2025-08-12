@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR"> {/* Set your default language here, or 'en' */}
+    <html lang="pt"> {/* Set your default language here, or 'en' */}
       <body>
           {children}
       </body>

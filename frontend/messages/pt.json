@@ -8,7 +8,7 @@
     "ourCabins": "Nossas Cabanas",
     "locale": "pt",
     "about": "Sobre",
-    "location": "Localização", 
+    "location": "Localização",
     "contact": "Contato",
     "connect": "Conecte-se conosco:"
   },
@@ -21,7 +21,6 @@
     "events": {
       "title": "Próximos Eventos"
     },
-    
     "cabins": {
       "title": "Nossas Cabanas de Madeira",
       "guests": "hóspedes",
@@ -47,6 +46,26 @@
         "title": "Acesso às Trilhas",
         "description": "Acesso direto a trilhas de caminhada e corrida"
       }
+    }
+  },
+  "AboutPage": {
+    "mainTitle": "Um Legado Construído à Mão",
+    "mainSubtitle": "Bem-vindo ao nosso refúgio nas montanhas, um lugar nascido do sonho de um pai e continuado com a paixão de um filho. Mais do que apenas cabanas, esta é a história da nossa família, compartilhada com você.",
+    "founderTitle": "Nosso Fundador: Ricardo Demaman",
+    "founderBio": "[Preencha com a história de Ricardo aqui. Por exemplo: Durante anos, Ricardo Demaman, um mestre artesão com um profundo amor pelas montanhas, imaginou um lugar onde as pessoas pudessem se desconectar do barulho e se reconectar com a natureza. Ele iniciou esta jornada em 2018, derramando seu coração e alma em cada tronco e junta, construindo não apenas estruturas, mas santuários.]",
+    "founderPhilosophy": "Sua filosofia era simples: construir com integridade, respeitar a terra e criar um espaço que parecesse um lar. Cada cabana é um testemunho de sua dedicação e artesanato.",
+    "founderAltText": "Ricardo Demaman, fundador das cabanas",
+    "sonTitle": "Um Toque Moderno: Perion Demaman",
+    "sonBio": "Seguindo os passos de seu pai, eu, Perion, assumi o comando para continuar o legado. Enquanto meu pai construiu a base física, eu construo as pontes que conectam nosso refúgio de paz com você.",
+    "sonMission": "Como desenvolvedor, profissional de marketing e seu ponto de contato, minha missão é garantir que sua experiência seja perfeita desde o momento em que você nos encontra online até o dia do check-out. Eu uno a tradição atemporal de nossas cabanas com a conveniência moderna que você merece.",
+    "sonAltText": "Perion Ferreira Demaman, gerenciando as cabanas",
+    "philosophyTitle": "Seu Refúgio na Montanha",
+    "philosophyMission": "[Preencha com a sua missão para os hóspedes aqui. Por exemplo: Acreditamos na magia dos momentos simples: o calor de uma lareira, o sabor do ar puro da montanha e o som do silêncio. Nosso objetivo é fornecer a você uma tela para pintar suas próprias memórias inesquecíveis.]",
+    "features": {
+      "feature1": "Administração familiar com um toque pessoal",
+      "feature2": "Construção artesanal com materiais locais",
+      "feature3": "Perfeito para casais e famílias",
+      "feature4": "Uma autêntica fuga para a natureza"
     }
   },
   "BookingModal": {
@@ -111,7 +130,7 @@
       "price": "320"
     },
     "cabin2": {
-      "name": "Cabana da Montanha Vermelha", 
+      "name": "Cabana da Montanha Vermelha",
       "description": "Cabana aconchegante aninhada em meio à natureza exuberante, com vistas deslumbrantes das montanhas e ambiente perfeito para famílias.",
       "price": "320"
     },

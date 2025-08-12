@@ -17,8 +17,8 @@ const Navbar = () => {
   // STEP 1: Define link types for clarity (anchor, internal, external)
   const navLinks = [
     // { name: t('ourCabins'), id: 'cabins', type: 'anchor' },
-    { name: t('about'), href: '/about', type: 'internal' },
-    { name: t('location'), href: 'https://maps.app.goo.gl/PA4bAos4KQt6V5W87', type: 'external' },
+    { name: t('about'), href: '/about', id: 'about', type: 'internal' },
+    { name: t('location'), id:'location', href: 'https://maps.app.goo.gl/PA4bAos4KQt6V5W87', type: 'external' },
   ];
 
   const socialLinks = [

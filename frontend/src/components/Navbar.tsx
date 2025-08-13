@@ -17,7 +17,7 @@ const Navbar = () => {
 
   // I've restored the "Our Cabins" link as it's an important part of your navigation
   const navLinks = [
-    { name: t('ourCabins'), id: 'cabins', type: 'anchor' },
+    // { name: t('ourCabins'), id: 'cabins', type: 'anchor' },
     { name: t('about'), href: '/about', type: 'internal' },
     { name: t('location'), href: 'https://maps.app.goo.gl/PA4bAos4KQt6V5W87', type: 'external' },
   ];

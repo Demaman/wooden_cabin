@@ -1,6 +1,9 @@
 // app/sitemap.ts
 
 import { MetadataRoute } from 'next'
+
+// Add this line to explicitly mark the route as static
+export const dynamic = 'force-static'
  
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://vitacabanas.com.br';

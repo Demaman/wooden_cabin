@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link'; // 1. We no longer need this
 import { useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { Box, Heading, Text, Button, IconButton } from '@chakra-ui/react';
@@ -18,7 +18,11 @@ const images = [
   '/images/views/SunDawn.jpg',
 ];
 
-export default function HeroCarousel() {
+interface HeroCarouselProps {
+  onScrollToCabins: () => void;
+}
+
+export default function HeroCarousel({ onScrollToCabins }: HeroCarouselProps) {
   const t = useTranslations('HomePage.hero');
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [
@@ -33,24 +37,14 @@ export default function HeroCarousel() {
     if (emblaApi) emblaApi.scrollNext();
   }, [emblaApi]);
 
+
   return (
-    // 1. Add a parent wrapper for positioning context
     <Box position="relative" h="100vh">
-      {/* 2. This Box is now the Embla VIEWPORT. It only contains the CONTAINER. */}
-      <Box
-        h="100%"
-        overflow="hidden" // Hide overflowing slides
-        ref={emblaRef}
-      >
-        {/* 3. This is the Embla CONTAINER. It holds the slides. */}
+      {/* ... (Carousel viewport code is unchanged) ... */}
+      <Box h="100%" overflow="hidden" ref={emblaRef}>
         <Box display="flex" h="100%">
           {images.map((src, index) => (
-            <Box
-              key={index}
-              flex="0 0 100%" // Each slide takes full width
-              position="relative"
-              h="100%"
-            >
+            <Box key={index} flex="0 0 100%" position="relative" h="100%">
               <Image
                 src={src}
                 alt={`Mountain landscape view ${index + 1}`}
@@ -96,29 +90,28 @@ export default function HeroCarousel() {
         >
           {t('subtitle')}
         </Text>
-        <Link href="#cabins" scroll={true} passHref>
-          <Button
-            size="lg"
-            colorScheme="green"
-            variant="solid"
-            rounded="full"
-            px={8}
-            py={6}
-            fontSize="lg"
-            fontWeight="semibold"
-            _hover={{
-              transform: 'scale(1.05)',
-              shadow: 'xl',
-            }}
-            transition="all 0.3s ease"
-            shadow="lg"
-          >
-            {t('cta')}
-          </Button>
-        </Link>
+
+        <Button
+          onClick={onScrollToCabins}
+          size="lg"
+          colorScheme="green"
+          variant="solid"
+          rounded="full"
+          px={8}
+          py={6}
+          fontSize="lg"
+          fontWeight="semibold"
+          _hover={{
+            transform: 'scale(1.05)',
+            shadow: 'xl',
+          }}
+          transition="all 0.3s ease"
+          shadow="lg"
+        >
+          {t('cta')}
+        </Button>
       </Box>
 
-      {/* Navigation Buttons */}
       <IconButton
         aria-label="Previous slide"
         onClick={scrollPrev}

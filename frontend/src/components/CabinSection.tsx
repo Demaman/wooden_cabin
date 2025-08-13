@@ -1,7 +1,7 @@
 // components/CabinSection.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, forwardRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Box, Heading, SimpleGrid } from '@chakra-ui/react';
 import PropertyCard from './PropertyCard';
@@ -28,7 +28,7 @@ const SHARED_CABIN_IMAGES = [
   "/images/cabins/CabinTransversal.jpg"
 ];
 
-const CabinsSection = () => {
+const CabinsSection = forwardRef<HTMLDivElement>((props, ref) => {
   // State for Booking Modal
   const [selectedProperty, setSelectedProperty] = useState<Property | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -92,7 +92,7 @@ const CabinsSection = () => {
   };
 
   return (
-    <Box as="section" id="cabins" py={16} bg="gray.50" scrollMarginTop="300px">
+    <Box as="section" id="cabins" py={16} bg="gray.50" ref={ref} scrollMarginTop="80px">
       <Box maxW="6xl" mx="auto" px={4}>
         <Heading 
           as="h2" 
@@ -131,6 +131,8 @@ const CabinsSection = () => {
       />
     </Box>
   );
-};
+});
+
+CabinsSection.displayName = 'CabinsSection';
 
 export default CabinsSection;

@@ -34,16 +34,19 @@ const AboutPage = () => {
           <div className="md:w-1/2">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">Nosso Fundador: Ricardo Demaman</h2>
             <p className="text-gray-700 mb-4">
-              Durante anos, Ricardo Demaman, um mestre artesão com um profundo amor pelas montanhas, imaginou um lugar onde as pessoas pudessem se desconectar do barulho e se reconectar com a natureza. Ele iniciou esta jornada em 2018, derramando seu coração e alma em cada tronco e junta, construindo não apenas estruturas, mas santuários.
+            A história da nossa família começou em Dourados, MS, onde Melicia e Ricardo Demaman criaram quatro filhos com muito amor. 
+            Em busca de um novo capítulo, decidiram construir três cabanas no alto da serra em Santa Catarina, um lugar feito para a família se reunir e criar novas memórias.
             </p>
             <p className="text-gray-700">
-              Sua filosofia era simples: construir com integridade, respeitar a terra e criar um espaço que parecesse um lar. Cada cabana é um testemunho de sua dedicação e artesanato.
+            No entanto, o destino os uniu de forma inesperada, e os filhos decidiram morar todos na mesma cidade. 
+            Assim, as cabanas, cheias de carinho e com uma vista deslumbrante, agora estão prontas para acolher a sua família.
+            De nossa família para a sua, convidamos você a escrever novas e preciosas memórias neste refúgio.
             </p>
           </div>
           <div className="md:w-1/2 w-full">
             <div className="relative h-80 md:h-96 w-full overflow-hidden rounded-lg shadow-xl">
               <Image 
-                src="/images/about/ricardo.jpeg"
+                src="/images/about/Ricardo&Melicia.jpeg"
                 alt="Ricardo Demaman, fundador das cabanas" 
                 fill
                 style={{ objectFit: 'cover' }}

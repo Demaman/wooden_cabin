@@ -32,7 +32,7 @@ const AboutPage = () => {
         {/* --- Seção 2: O Fundador --- */}
         <div className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12">
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Nosso Fundador: Ricardo Demaman</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-4">Nossos Fundadores: Melicia & Ricardo Demaman</h2>
             <p className="text-gray-700 mb-4">
             A história da nossa família começou em Dourados, MS, onde Melicia e Ricardo Demaman criaram quatro filhos com muito amor. 
             Em busca de um novo capítulo, decidiram construir três cabanas no alto da serra em Santa Catarina, um lugar feito para a família se reunir e criar novas memórias.

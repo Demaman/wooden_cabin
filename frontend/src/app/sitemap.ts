@@ -1,24 +1,31 @@
 // app/sitemap.ts
 
-import { MetadataRoute } from 'next'
+import { MetadataRoute } from 'next';
 
-// Add this line to explicitly mark the route as static
-export const dynamic = 'force-static'
- 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://vitacabanas.com.br';
 
-  // The pages on your site
-  const pages = ['', '/about']; 
-  
-  // Your supported languages
-  const locales = ['pt', 'en'];
+  const pages = ['', '/about'];
 
-  const urls = locales.flatMap((locale) => {
-    return pages.map((page) => ({
-      url: `${baseUrl}/${locale}${page}`,
-      lastModified: new Date(),
-    }));
+  const locales = ['pt', 'en'];
+  
+  const defaultLocale = 'pt';
+
+  const urls: MetadataRoute.Sitemap = [];
+
+  locales.forEach(locale => {
+    pages.forEach(page => {
+      const isDefaultLocale = locale === defaultLocale;
+      const path = isDefaultLocale ? page : `/${locale}${page}`;
+      const url = `${baseUrl}${path === '' ? '/' : path}`;
+
+      urls.push({
+        url: url,
+        lastModified: new Date(),
+      });
+    });
   });
 
   return urls;

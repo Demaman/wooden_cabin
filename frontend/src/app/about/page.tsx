@@ -22,7 +22,7 @@ const AboutPage = () => {
 
         {/* --- Seção 1: Nossa História --- */}
         <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Um Legado Construído à Mão</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Sobre o Recanto Vita Bella: Nossas Cabanas em Nova Trento</h1>
           <p className="max-w-3xl mx-auto text-lg text-gray-600">
             Bem-vindo ao nosso refúgio nas montanhas, um lugar nascido do sonho de um pai e continuado com a paixão de um filho. 
             Mais do que apenas cabanas, esta é a história da nossa família, compartilhada com você.

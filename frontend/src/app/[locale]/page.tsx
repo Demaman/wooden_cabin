@@ -15,7 +15,7 @@ export default function HomePage() {
 
   // THIS IS THE FIX 👇
   // We tell the function that the ref's .current property can be HTMLDivElement OR null.
-  const handleScrollToSection = (targetRef: React.RefObject<HTMLDivElement>) => {
+  const handleScrollToSection = (targetRef: React.RefObject<HTMLDivElement | null>) => {
     const navbarElement = document.getElementById('main-navbar');
     
     if (targetRef.current && navbarElement) {

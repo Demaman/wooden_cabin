@@ -7,6 +7,7 @@ import { Box, Flex, Text, HStack, IconButton } from '@chakra-ui/react';
 import { FaHome, FaBars, FaTimes, FaWhatsapp, FaInstagram } from 'react-icons/fa';
 import { useTranslations } from 'next-intl';
 import LanguageSwitcher from './LanguageSwitcher';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +15,11 @@ const Navbar = () => {
   const router = useRouter();
   const t = useTranslations('Navigation');
 
-  // STEP 1: Define link types for clarity (anchor, internal, external)
+  // I've restored the "Our Cabins" link as it's an important part of your navigation
   const navLinks = [
-    // { name: t('ourCabins'), id: 'cabins', type: 'anchor' },
-    { name: t('about'), href: '/about', id: 'about', type: 'internal' },
-    { name: t('location'), id:'location', href: 'https://maps.app.goo.gl/PA4bAos4KQt6V5W87', type: 'external' },
+    { name: t('ourCabins'), id: 'cabins', type: 'anchor' },
+    { name: t('about'), href: '/about', type: 'internal' },
+    { name: t('location'), href: 'https://maps.app.goo.gl/PA4bAos4KQt6V5W87', type: 'external' },
   ];
 
   const socialLinks = [
@@ -75,11 +76,11 @@ const Navbar = () => {
 
   return (
     <Box id="main-navbar" bg="white" shadow="lg" position="sticky" top={0} zIndex={50}>
-      <div style={{ maxWidth: '80rem', margin: '0 auto'}}>
-        <Flex minH={16} py={4} align="center" justify="space-between">
+      <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '0 1rem' }}>
+        <Flex h="80px" align="center" justify="space-between">
           <Link href="/">
-            <Flex align="center" cursor="pointer">
-              <Box color="green.500" mr={2}>
+            <Flex alignItems="center" cursor="pointer">
+            <Box color="green.500" mr={2}>
                 <FaHome size={32} />
               </Box>
               <Text fontSize="lg" fontWeight="semibold" color="gray.900">
@@ -87,10 +88,9 @@ const Navbar = () => {
               </Text>
             </Flex>
           </Link>
-
+          
           {/* Desktop Menu */}
           <Flex display={{ base: 'none', md: 'flex' }} gap={6} align="center">
-            {/* STEP 2: Update rendering logic for all link types */}
             {navLinks.map((link) => {
               if (link.type === 'anchor') {
                 return (
@@ -121,7 +121,6 @@ const Navbar = () => {
                   </a>
                 );
               }
-              // Default to internal link
               return (
                 <Link key={link.name} href={link.href!} onClick={handleLinkClick}>
                   <Text
@@ -174,7 +173,6 @@ const Navbar = () => {
         {isOpen && (
           <Box pb={4} display={{ md: 'none' }} borderTopWidth={1} borderColor="gray.200">
             <Flex direction="column" gap={2} pt={4}>
-              {/* STEP 3: Apply same logic to mobile menu */}
               {navLinks.map((link) => {
                 if (link.type === 'anchor') {
                   return (

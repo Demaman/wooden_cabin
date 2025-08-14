@@ -35,7 +35,7 @@ const BookingModal = ({
   isOpen, 
   onClose, 
   property, 
-  whatsappNumber = "1234567890"
+  whatsappNumber = "5547997223196"
 }: BookingModalProps) => {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
